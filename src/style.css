@@ -40,6 +40,11 @@ button {
   background: transparent;
 }
 
+
+picture {
+  display: flex;
+}
+
 .logo {
   fill: var(--cyan-dark);
 }
@@ -52,16 +57,13 @@ body {
   flex-direction: column;
   width: 100vw;
 
+
   /* =========================== Header */
   &>header {
     display: flex;
     flex-direction: column;
     width: 100%;
     position: relative;
-
-    &>picture {
-      display: flex;
-    }
 
     .bg-image {
       width: 100%;
@@ -246,13 +248,149 @@ body {
         color: var(--blue-dark);
       }
     }
+
+    .testimonials-section {
+      padding: 4rem 2rem;
+
+      h2 {
+        text-transform: uppercase;
+        color: var(--dark-grayish-blue-200);
+        font-family: var(--font-2);
+        font-size: 1.1rem;
+        letter-spacing: 0.2rem;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+
+        li:first-child {
+          margin-top: 2rem;
+        }
+
+        li:last-child {
+          margin-bottom: 1.5rem;
+        }
+
+
+        li>figure {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 2rem;
+
+          img {
+            border-radius: 99999px;
+            width: 4rem;
+            height: 4rem;
+          }
+
+          blockquote {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+
+            span {
+              color: var(--blue-grayish-300);
+              line-height: 150%;
+              font-size: 1.1rem;
+            }
+
+            footer {
+              display: flex;
+              flex-direction: column;
+              gap: 0.5rem;
+
+              &>cite {
+                font-style: normal;
+              }
+
+              &>cite:nth-child(1) {
+                font-family: var(--font-2);
+                color: var(--blue-dark);
+                font-size: 1.1rem;
+                font-weight: 900;
+              }
+
+              &>cite:nth-child(2) {
+                font-size: 0.85rem;
+                color: var(--blue-grayish-100);
+              }
+            }
+          }
+        }
+
+      }
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      width: 100%;
+
+      .gallery-image {
+        width: 100%;
+        object-fit: contain;
+      }
+    }
   }
+
   /* End =========================== Main */
 
 
 
   /* =========================== Footer */
+  &>footer {
+    padding: 4rem 2.5rem;
+    background-color: var(--cyan);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
 
+    .svg-wrapper {
+      display: flex;
+      height: fit-content;
+
+      svg {
+        width: fit-content;
+        height: fit-content;
+        scale: 1.4;
+      }
+    }
+
+    .secondary-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      width: 100%;
+      margin-bottom: 3rem;
+
+      ul {
+        display: flex;
+        font-size: 1.15rem;
+        justify-content: space-between;
+        width: 100%;
+
+        * {
+          color: var(--cyan-dark);
+        }
+
+      }
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+  }
 
   /* End =========================== Footer */
 
