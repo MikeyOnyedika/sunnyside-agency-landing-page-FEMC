@@ -1,18 +1,59 @@
-const menuBtn = document.querySelector("header button")
-console.log("hamburger:", menuBtn)
-let isOpenMenu = false;
+import { createProxiedState } from "./reactiveState"
 
-/* TODO: You're done with the styling for the mobile view of the main webpage. 
- * The only styling that remains is that for the hamburger menu. The footer background color looks abit off. 
- * Don't bother with that. I already checked it and it seems that it's the frontendmentor people that gave us the wrong color. So, don't bother with that. 
- * You left off with testing to see if the event listener code is working correctly and it is.
- * The next step now is to style the .nav in the header section and use hamburger button trigger to open the mobile menu. 
- * The `.primary-nav .nav` class has a `display: none` set on the nav. 
- * For the close of the nav, I think it should be when user clicks outside the nav component.
+const menuBtn = document.getElementById("menu-btn");
+const menubarEl = document.querySelector(".nav-wrapper");
+
+let proxiedState = createProxiedState<{ isOpenMenu: boolean }>({ isOpenMenu: false });
+
+function toggleIsOpenMenu() {
+    proxiedState.state.isOpenMenu = !proxiedState.state.isOpenMenu;
+}
+
+
+function showNavBar() {
+    menubarEl?.classList.remove("hidden");
+    menubarEl?.classList.add("flex");
+}
+
+function hideNavBar() {
+    menubarEl?.classList.add("hidden");
+    menubarEl?.classList.remove("flex");
+}
+
+// show/hide the menu bar when isOpenMenu is toggled
+proxiedState.addListener((state) => {
+    if (state.isOpenMenu) {
+        // show menu bar
+        showNavBar();
+    } else {
+        //hide menu bar
+        hideNavBar();
+    }
+    console.log("menubar classlist", menubarEl?.classList);
+})
+
+// menuBtn?.addEventListener("click", () => {
+//     console.log("click");
+//     toggleIsOpenMenu();
+// });
+//
+//
+
+/*
+ * TODO: this is the weirdest issue I've faced today. When I handle the click event on the hamburger button using the event listener set directly on the menuBtn object, everything works as expected but once I try to handle the click even on the same hamburger button using the document.addEventListener(), then clicking on the button only registers when the lower part of the button is clicked.
+ * i still need to implement hiding the navbar if someother part of the page was clicked. This is what I am currently working on. That and completing the styling for the navbar. the <li> for the navbar is still not well styled 
+ * Once this is done, I can start stylding for desktop layout
  * 
- * */
+*/
 
-menuBtn?.addEventListener("click", () => {
-    isOpenMenu = true;
-    console.log('isopenmenu', isOpenMenu);
-});
+document.addEventListener("click", (event) => {
+    if (event.target == menuBtn) {
+        console.log("toggle buttonclicked");
+        toggleIsOpenMenu();
+    }
+
+    //
+    // if (menubarEl?.contains(event.target as Node) === false) {
+    //     hideNavBar();
+    // }
+})

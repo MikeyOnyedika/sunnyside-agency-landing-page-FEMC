@@ -49,6 +49,14 @@ picture {
   fill: var(--cyan-dark);
 }
 
+.hidden {
+  display: none;
+}
+
+.flex {
+  display: flex;
+}
+
 body {
   font-family: var(--font-1);
   font-weight: 600;
@@ -80,14 +88,67 @@ body {
       flex-direction: column;
       gap: 6rem;
 
+
       .primary-nav {
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        gap: 1.5rem;
 
-        .nav {
-          display: none;
-          flex-direction: column;
+        .header {
+          display: flex;
+          justify-content: space-between;
+
+          &>img {
+            width: fit-content;
+            height: fit-content;
+          }
+
+          button {
+            background-color: green;
+            padding: 0.5rem;
+          }
         }
+
+        .nav-wrapper-anchor {
+          position: relative;
+          width: 100%;
+
+          .nav-wrapper {
+            inset: 0;
+            flex-direction: column;
+            align-items: flex-end;
+            position: absolute;
+
+            .nav {
+              display: flex;
+              width: 100%;
+              flex-direction: column;
+              background-color: var(--white);
+              padding: 2rem;
+              align-items: center;
+              gap: 2rem;
+
+              li {
+                padding: 0.5rem 1rem;
+
+                a {
+                  font-size: 1rem;
+                  font-weight: 700;
+                  color: var(--dark-grayish-blue-200);
+                }
+              }
+            }
+          }
+
+          .nav-wrapper::before {
+            content: "";
+            width: 1.5rem;
+            height: 1.5rem;
+            border-top: 1.5rem solid transparent;
+            border-right: 1.5rem solid var(--white);
+          }
+        }
+
       }
 
       .hero {
