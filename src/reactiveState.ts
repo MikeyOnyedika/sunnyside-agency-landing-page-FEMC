@@ -34,13 +34,16 @@ export function createProxiedState<T extends Record<string | symbol, any>>(initi
     `
     const state = new Proxy<typeof initialValue>(initialValue, {
         set(target, property: keyof T, value) {
-            const oldState = { ...target };
             if (property in target) {
-                target[property] = value;
-            }
-            for (const listener of listeners) {
-                // calling listener functions in sequence
-                listener.fn(target, oldState);
+                let oldValue = target[property]
+                if (oldValue != value) {
+                    target[property] = value;
+                    const oldState = { ...target };
+                    for (const listener of listeners) {
+                        // calling listener functions in sequence
+                        listener.fn(target, oldState);
+                    }
+                }
             }
             return true;
         },
