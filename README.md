@@ -30,8 +30,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [sunnyside-agency-landing-page-FEMC](https://github.com/MikeyOnyedika/sunnyside-agency-landing-page-FEMC)
+- Live Site URL: [sunnyside-agency-landing-page-femc.vercel.app/](https://sunnyside-agency-landing-page-femc.vercel.app/)
 
 ## My process
 
